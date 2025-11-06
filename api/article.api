@@ -2,7 +2,7 @@ syntax = "v1"
 
 type (
 	ArticleRequest {
-		Id int `path:id`
+		Id int `path:"id"`
 	}
 	Article {
 		Id          int    `json:"id"`

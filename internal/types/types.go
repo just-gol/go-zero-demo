@@ -25,7 +25,7 @@ type Article struct {
 }
 
 type ArticleRequest struct {
-	Id int `path:id`
+	Id int `path:"id"`
 }
 
 type CommonResponse struct {

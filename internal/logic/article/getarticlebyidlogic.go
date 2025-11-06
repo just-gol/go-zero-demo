@@ -27,11 +27,17 @@ func NewGetArticleByIdLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Ge
 }
 
 func (l *GetArticleByIdLogic) GetArticleById(req *types.ArticleRequest) (resp *types.CommonResponse, err error) {
-	logx.Info("GetArticleById", req.Id)
+	article, _ := l.svcCtx.ArticleModel.FindOne(l.ctx, int64(req.Id))
 	return &types.CommonResponse{
 		Code:    200,
 		Message: "success",
-		Data:    types.Article{Id: req.Id, Title: "title", Content: "content"},
+		Data: types.Article{
+			Id:          int(article.Id),
+			Title:       article.Title.String,
+			Content:     article.Content.String,
+			Description: article.Description.String,
+			Picture:     article.Picture.String,
+		},
 		Success: true,
 	}, nil
 }
