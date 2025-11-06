@@ -5,9 +5,11 @@ package focus
 
 import (
 	"context"
+	"database/sql"
 
 	"zerorequest/internal/svc"
 	"zerorequest/internal/types"
+	"zerorequest/model/mysql"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -27,10 +29,25 @@ func NewAddFocusLogic(ctx context.Context, svcCtx *svc.ServiceContext) *AddFocus
 }
 
 func (l *AddFocusLogic) AddFocus(req *types.AddFocusRequest) (resp *types.CommonResponse, err error) {
-	logx.Info("AddFocus", req.Pic, req.Link, req.Title)
+	focus := mysql.Focus{
+		Title:    sql.NullString{String: req.Title, Valid: true},
+		Pic:      sql.NullString{String: req.Pic, Valid: true},
+		Link:     sql.NullString{String: req.Link, Valid: true},
+		Position: int64(req.Position),
+	}
+	_, err = l.svcCtx.FocusModel.Insert(l.ctx, &focus)
+	if err != nil {
+		return &types.CommonResponse{
+			Code:    500,
+			Message: "error",
+			Data:    "",
+			Success: false,
+		}, err
+	}
 	return &types.CommonResponse{
 		Code:    200,
 		Message: "success",
-		Data:    nil,
+		Data:    "",
+		Success: true,
 	}, nil
 }

@@ -53,10 +53,10 @@ type FocusRequest struct {
 
 type UpdateFocusRequest struct {
 	Id       int    `json:"id"`
-	Title    string `json:"title"`
-	Pic      string `json:"pic"`
-	Link     string `json:"link"`
-	Position int    `json:"position"`
+	Title    string `json:"title,optional"`
+	Pic      string `json:"pic,optional"`
+	Link     string `json:"link,optional"`
+	Position int    `json:"position,optional"`
 }
 
 type User struct {
