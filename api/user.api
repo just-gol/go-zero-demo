@@ -21,5 +21,8 @@ type (
 service shop-api {
 	@handler AddUser
 	post /addUser (AddUserRequest) returns (CommonResponse)
+
+	@handler GetUser
+	get /getUser returns (CommonResponse)
 }
 

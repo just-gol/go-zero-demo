@@ -29,26 +29,31 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 	server.AddRoutes(
 		[]rest.Route{
 			{
+				// 获取轮播图列表
 				Method:  http.MethodGet,
 				Path:    "/",
 				Handler: focus.GetFocusHandler(serverCtx),
 			},
 			{
+				// 添加轮播图
 				Method:  http.MethodPost,
 				Path:    "/addFocus",
 				Handler: focus.AddFocusHandler(serverCtx),
 			},
 			{
+				// 删除轮播图
 				Method:  http.MethodPost,
 				Path:    "/deleteFocus",
 				Handler: focus.DeleteFocusHandler(serverCtx),
 			},
 			{
+				// 获取轮播图详情
 				Method:  http.MethodGet,
 				Path:    "/getFocusById",
 				Handler: focus.GetFocusByIdHandler(serverCtx),
 			},
 			{
+				// 修改轮播图
 				Method:  http.MethodPost,
 				Path:    "/updateFocus",
 				Handler: focus.UpdateFocusHandler(serverCtx),
@@ -63,6 +68,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Method:  http.MethodPost,
 				Path:    "/addUser",
 				Handler: user.AddUserHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/getUser",
+				Handler: user.GetUserHandler(serverCtx),
 			},
 		},
 		rest.WithPrefix("/api/user"),

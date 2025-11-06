@@ -31,18 +31,23 @@ type (
 	prefix: /api/focus
 )
 service shop-api {
+	@doc "获取轮播图列表"
 	@handler GetFocus
 	get / returns (CommonResponse)
 
+	@doc "获取轮播图详情"
 	@handler GetFocusById
 	get /getFocusById (FocusRequest) returns (CommonResponse)
 
+	@doc "添加轮播图"
 	@handler AddFocus
 	post /addFocus (AddFocusRequest) returns (CommonResponse)
 
+	@doc "修改轮播图"
 	@handler UpdateFocus
 	post /updateFocus (UpdateFocusRequest) returns (CommonResponse)
 
+	@doc "删除轮播图"
 	@handler DeleteFocus
 	post /deleteFocus (DeleteFocusRequest) returns (CommonResponse)
 }
