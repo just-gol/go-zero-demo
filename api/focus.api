@@ -1,0 +1,49 @@
+syntax = "v1"
+
+type (
+	Focus {
+		Id    int    `json:"id"`
+		Title string `json:"title"`
+		Image string `json:"image"`
+		Link  string `json:"link"`
+	}
+	AddFocusRequest {
+		Title string `json:"title"`
+		Image string `json:"image"`
+		Link  string `json:"link"`
+	}
+	UpdateFocusRequest {
+		Id    int    `json:"id"`
+		Title string `json:"title"`
+		Image string `json:"image"`
+		Link  string `json:"link"`
+	}
+	FocusRequest {
+		Id int `form:"id"`
+	}
+	DeleteFocusRequest {
+		Id int `json:"id"`
+	}
+)
+
+@server (
+	group:  focus
+	prefix: /api/focus
+)
+service shop-api {
+	@handler GetFocus
+	get / returns (CommonResponse)
+
+	@handler GetFocusById
+	get /getFocusById (FocusRequest) returns (CommonResponse)
+
+	@handler AddFocus
+	post /addFocus (AddFocusRequest) returns (CommonResponse)
+
+	@handler UpdateFocus
+	post /updateFocus (UpdateFocusRequest) returns (CommonResponse)
+
+	@handler DeleteFocus
+	post /deleteFocus (DeleteFocusRequest) returns (CommonResponse)
+}
+
