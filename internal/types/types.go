@@ -4,9 +4,10 @@
 package types
 
 type AddFocusRequest struct {
-	Title string `json:"title"`
-	Image string `json:"image"`
-	Link  string `json:"link"`
+	Title    string `json:"title"`
+	Pic      string `json:"pic"`
+	Link     string `json:"link"`
+	Position int    `json:"position"`
 }
 
 type AddUserRequest struct {
@@ -37,10 +38,11 @@ type DeleteFocusRequest struct {
 }
 
 type Focus struct {
-	Id    int    `json:"id"`
-	Title string `json:"title"`
-	Image string `json:"image"`
-	Link  string `json:"link"`
+	Id       int    `json:"id"`
+	Title    string `json:"title"`
+	Pic      string `json:"pic"`
+	Link     string `json:"link"`
+	Position int    `json:"position"`
 }
 
 type FocusRequest struct {
@@ -48,10 +50,11 @@ type FocusRequest struct {
 }
 
 type UpdateFocusRequest struct {
-	Id    int    `json:"id"`
-	Title string `json:"title"`
-	Image string `json:"image"`
-	Link  string `json:"link"`
+	Id       int    `json:"id"`
+	Title    string `json:"title"`
+	Pic      string `json:"pic"`
+	Link     string `json:"link"`
+	Position int    `json:"position"`
 }
 
 type User struct {

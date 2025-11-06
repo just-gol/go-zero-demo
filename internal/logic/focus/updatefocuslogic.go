@@ -27,7 +27,7 @@ func NewUpdateFocusLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Updat
 }
 
 func (l *UpdateFocusLogic) UpdateFocus(req *types.UpdateFocusRequest) (resp *types.CommonResponse, err error) {
-	logx.Info("UpdateFocus", req.Id, req.Image, req.Link, req.Title)
+	logx.Info("UpdateFocus", req.Id, req.Pic, req.Link, req.Title)
 	return &types.CommonResponse{
 		Code:    200,
 		Message: "success",

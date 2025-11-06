@@ -2,21 +2,24 @@ syntax = "v1"
 
 type (
 	Focus {
-		Id    int    `json:"id"`
-		Title string `json:"title"`
-		Image string `json:"image"`
-		Link  string `json:"link"`
+		Id       int    `json:"id"`
+		Title    string `json:"title"`
+		Pic      string `json:"pic"`
+		Link     string `json:"link"`
+		Position int    `json:"position"`
 	}
 	AddFocusRequest {
-		Title string `json:"title"`
-		Image string `json:"image"`
-		Link  string `json:"link"`
+		Title    string `json:"title"`
+		Pic      string `json:"pic"`
+		Link     string `json:"link"`
+		Position int    `json:"position"`
 	}
 	UpdateFocusRequest {
-		Id    int    `json:"id"`
-		Title string `json:"title"`
-		Image string `json:"image"`
-		Link  string `json:"link"`
+		Id       int    `json:"id"`
+		Title    string `json:"title"`
+		Pic      string `json:"pic"`
+		Link     string `json:"link"`
+		Position int    `json:"position"`
 	}
 	FocusRequest {
 		Id int `form:"id"`

@@ -28,10 +28,25 @@ func NewGetFocusByIdLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetF
 
 func (l *GetFocusByIdLogic) GetFocusById(req *types.FocusRequest) (resp *types.CommonResponse, err error) {
 	logx.Info("GetFocusById", req.Id)
+	id := req.Id
+	focus, err := l.svcCtx.FocusModel.FindOne(l.ctx, int64(id))
+	if err != nil {
+		return &types.CommonResponse{
+			Code:    500,
+			Message: "error",
+			Data:    "",
+			Success: false,
+		}, err
+	}
 	return &types.CommonResponse{
 		Code:    200,
 		Message: "success",
-		Data:    types.Focus{Id: req.Id, Image: "https://picsum.photos/200/300", Link: "https://picsum.photos/200/300", Title: "title"},
+		Data: types.Focus{
+			Id:    int(focus.Id),
+			Pic:   focus.Pic.String,
+			Link:  focus.Link.String,
+			Title: focus.Title.String,
+		},
 		Success: true,
 	}, nil
 }

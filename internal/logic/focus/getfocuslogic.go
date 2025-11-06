@@ -33,13 +33,13 @@ func (l *GetFocusLogic) GetFocus() (resp *types.CommonResponse, err error) {
 		Data: []types.Focus{
 			{
 				Id:    1,
-				Image: "https://picsum.photos/200/300",
+				Pic:   "https://picsum.photos/200/300",
 				Link:  "https://picsum.photos/200/300",
 				Title: "Focus 1",
 			},
 			{
 				Id:    2,
-				Image: "https://picsum.photos/200/300",
+				Pic:   "https://picsum.photos/200/300",
 				Link:  "https://picsum.photos/200/300",
 				Title: "Focus 2",
 			},

@@ -27,7 +27,7 @@ func NewAddFocusLogic(ctx context.Context, svcCtx *svc.ServiceContext) *AddFocus
 }
 
 func (l *AddFocusLogic) AddFocus(req *types.AddFocusRequest) (resp *types.CommonResponse, err error) {
-	logx.Info("AddFocus", req.Image, req.Link, req.Title)
+	logx.Info("AddFocus", req.Pic, req.Link, req.Title)
 	return &types.CommonResponse{
 		Code:    200,
 		Message: "success",
