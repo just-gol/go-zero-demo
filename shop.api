@@ -1,0 +1,99 @@
+syntax = "v1"
+
+type CommonResponse {
+	Code    int         `json:"code"`
+	Message string      `json:"message"`
+	Data    interface{} `json:"data,omitempty"`
+	Success bool        `json:"success"`
+}
+
+type (
+	Focus {
+		Id    int    `json:"id"`
+		Title string `json:"title"`
+		Image string `json:"image"`
+		Link  string `json:"link"`
+	}
+	AddFocusRequest {
+		Title string `json:"title"`
+		Image string `json:"image"`
+		Link  string `json:"link"`
+	}
+	UpdateFocusRequest {
+		Id    int    `json:"id"`
+		Title string `json:"title"`
+		Image string `json:"image"`
+		Link  string `json:"link"`
+	}
+	FocusRequest {
+		Id int `form:"id"`
+	}
+	DeleteFocusRequest {
+		Id int `json:"id"`
+	}
+)
+
+type (
+	ArticleRequest {
+		Id int `path:id`
+	}
+	Article {
+		Id      int    `json:"id"`
+		Title   string `json:"title"`
+		Content string `json:"content"`
+	}
+)
+
+type (
+	AddUserRequest {
+		Name string `json:"name"`
+		Age  int    `json:"age,default=18"` // 默认参数
+		Sex  int    `json:"sex,option=1|2"` // 可选参数
+	}
+	User {
+		Id   int    `json:"id"`
+		Name string `json:"name"`
+		Age  int    `json:"age"`
+		Sex  int    `json:"sex"`
+	}
+)
+
+@server (
+	group:  focus
+	prefix: /api/focus
+)
+service shop-api {
+	@handler GetFocus
+	get / returns (CommonResponse)
+
+	@handler GetFocusById
+	get /getFocusById (FocusRequest) returns (CommonResponse)
+
+	@handler AddFocus
+	post /addFocus (AddFocusRequest) returns (CommonResponse)
+
+	@handler UpdateFocus
+	post /updateFocus (UpdateFocusRequest) returns (CommonResponse)
+
+	@handler DeleteFocus
+	post /deleteFocus (DeleteFocusRequest) returns (CommonResponse)
+}
+
+@server (
+	group:  article
+	prefix: /api/article
+)
+service shop-api {
+	@handler GetArticleById
+	get /:id (ArticleRequest) returns (CommonResponse)
+}
+
+@server (
+	group:  user
+	prefix: /api/user
+)
+service shop-api {
+	@handler AddUser
+	post /addUser (AddUserRequest) returns (CommonResponse)
+}
+
