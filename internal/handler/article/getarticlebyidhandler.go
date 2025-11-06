@@ -6,10 +6,11 @@ package article
 import (
 	"net/http"
 
-	"github.com/zeromicro/go-zero/rest/httpx"
 	"zerorequest/internal/logic/article"
 	"zerorequest/internal/svc"
 	"zerorequest/internal/types"
+
+	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
 func GetArticleByIdHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
